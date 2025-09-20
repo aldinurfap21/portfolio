@@ -1,13 +1,19 @@
+// src/components/TypingText.tsx
 'use client';
+
 import { useEffect, useState } from 'react';
 
 interface TypingTextProps {
   texts: string[];
-  speed?: number; // Kecepatan ketik per karakter (dalam ms)
-  delay?: number; // Jeda sebelum mulai menghapus (dalam ms)
+  speed?: number;
+  delay?: number;
 }
 
-export default function TypingText({ texts, speed = 100, delay = 1500 }: TypingTextProps) {
+export default function TypingText({
+  texts,
+  speed = 100,
+  delay = 1500,
+}: TypingTextProps) {
   const [displayed, setDisplayed] = useState('');
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -15,21 +21,19 @@ export default function TypingText({ texts, speed = 100, delay = 1500 }: TypingT
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
+    const currentText = texts[textIndex];
 
-    // Function utama yang mengatur alur ketik dan hapus
     const handleTyping = () => {
-      const currentText = texts[textIndex];
-
       if (!isDeleting) {
         if (charIndex < currentText.length) {
-          setDisplayed(prev => prev + currentText[charIndex]);
+          setDisplayed((prev) => prev + currentText[charIndex]);
           setCharIndex(charIndex + 1);
         } else {
           timeout = setTimeout(() => setIsDeleting(true), delay);
         }
       } else {
         if (displayed.length > 0) {
-          setDisplayed(prev => prev.slice(0, -1));
+          setDisplayed((prev) => prev.slice(0, -1));
         } else {
           setIsDeleting(false);
           setCharIndex(0);
@@ -46,7 +50,7 @@ export default function TypingText({ texts, speed = 100, delay = 1500 }: TypingT
 
   return (
     <span
-      className="font-bold text-primary inline-block"
+      className="inline-block font-bold text-purple-600 dark:text-purple-600"
       style={{ minWidth: '220px' }}
     >
       {displayed}

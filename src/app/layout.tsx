@@ -9,8 +9,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 
 export const metadata = {
-  title: 'Aldi Pratama Portfolio',
-  description: 'Professional Web Developer Portfolio',
+  title: 'Portfolio',
+  description: 'Aldi Portfolio',
+  icons: {
+    icon: '/Favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -29,4 +32,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-};
+}

@@ -1,56 +1,57 @@
 'use client';
 
-import { error } from "console";
-import { createContext,useContext,useEffect,ReactNode, useState } from "react";
+import { createContext, useContext, useEffect, ReactNode, useState } from "react";
 
-//state theme
-interface themeContextProps {
-    theme : string;
-    toggleTheme:() => void;
+interface ThemeContextProps {
+  theme: string;
+  toggleTheme: () => void;
 }
-const ThemeContext = createContext<themeContextProps | undefined>(undefined);
 
-//provider pembungkus
-export function ThemeProvider ({children}: {children: ReactNode}){
-    const [theme,setTheme] =  useState('light');
-//detektor preferensi user
-useEffect(() => {
-    if(typeof window !== 'undefined'){
-        const storedTheme = localStorage.getItem('theme');
-        if(storedTheme){
-            setTheme(storedTheme);
-        } else if(window.matchMedia('(prefers-color-scheme:dark)').matches){
-            setTheme('dark');
-        }
+const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState("light");
+
+  // deteksi preferensi user
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        setTheme(storedTheme);
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme("dark");
+      }
     }
-},[]);
-//simpan tema distorage dan bisa dipakai untuk mengubah diclass
-useEffect(()=>{
+  }, []);
+
+  // simpan tema ke localStorage & update root class
+  useEffect(() => {
     const root = document.documentElement;
-    if(theme === 'dark'){
-        root.classList.add('dark');
-        localStorage.setItem('theme','dark');
-    }else {
-        root.classList.remove('dark');
-        localStorage.setItem('theme','light');
+    if (theme === "dark") {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-},[theme]);
+  }, [theme]);
 
-const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-};
-return(
-    <ThemeContext.Provider value={{theme,toggleTheme}}>
-        {children}
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
     </ThemeContext.Provider>
-);
+  );
 }
 
-//custom hook untuk di component lain
+// custom hook
 export const useTheme = () => {
-    const context = useContext(ThemeContext);
-    if(context === undefined){
-        throw new Error('useTheme Harus sama yang ada di ThemeProvider');
-    }
-    return context;
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme harus dipakai dalam ThemeProvider");
+  }
+  return context;
 };
