@@ -4,6 +4,7 @@ A modern, responsive portfolio website built with Next.js and Tailwind CSS, show
 
 ## 🚀 Live Demo
 
+[Visit Portfolio Website](https://aldinurfapratama.vercel.app/) <!-- Add your live URL here -->
 
 ## 📋 Table of Contents
 
@@ -139,7 +140,7 @@ src/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/aldinurfap21/portfolio.git
+git clone https://github.com/yourusername/portfolio-website.git
 cd portfolio-website
 ```
 
@@ -254,10 +255,11 @@ While this is a personal portfolio, suggestions and feedback are welcome:
 
 **Aldi Nurfa Pratama**
 - Location: Bandung, Indonesia
-- Email: [aldibusnisess.com]
+- Email: [aldibusnisess@gmail.com]
 - WhatsApp: [+62 83137450560]
 - LinkedIn: [https://www.linkedin.com/in/aldi-pratama-8075082a8/]
 - Telegram: [@aldinurfap]
+
 
 ## 📝 License
 
