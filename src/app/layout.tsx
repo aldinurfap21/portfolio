@@ -4,33 +4,46 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { ThemeProvider } from './providers/ThemeProviders';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 
 export const metadata = {
-  title: 'Aldi Nurfa Pratama - Full-Stack Web Developer | Jasa Website Professional',
+  metadataBase: new URL('https://aldinurfapratama.vercel.app'),
+  title: {
+    default: 'Aldi Nurfa Pratama - Full-Stack Web Developer | Jasa Website Professional Bandung',
+    template: '%s | Aldi Nurfa Pratama'
+  },
   description:
-    'Web developer profesional dari Bandung, Indonesia. Spesialis React, Next.js, PHP Laravel. Melayani jasa pembuatan website, aplikasi web, dan development freelance untuk klien lokal & internasional.',
+    'Aldi Nurfa Pratama - Web developer profesional dari Bandung, Indonesia. Spesialis React, Next.js, PHP Laravel. Melayani jasa pembuatan website, aplikasi web, dan development freelance untuk klien lokal & internasional dengan harga terjangkau.',
   keywords: [
     'Aldi Nurfa Pratama',
     'Web Developer Bandung',
     'Jasa Website Bandung',
     'Full Stack Web Developer',
-    'React Developer',
+    'React Developer Indonesia',
     'Next.js Expert',
     'PHP Laravel Developer',
-    'Freelance Web Developer',
+    'Freelance Web Developer Bandung',
     'Frontend Developer',
     'Backend Developer',
-    'Web Development Services',
+    'Jasa Pembuatan Website Murah',
+    'Web Development Services Indonesia',
+    'Portfolio Aldi Nurfa Pratama',
   ],
   authors: [{ name: 'Aldi Nurfa Pratama', url: 'https://aldinurfapratama.vercel.app' }],
   creator: 'Aldi Nurfa Pratama',
   publisher: 'Aldi Nurfa Pratama',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -53,7 +66,7 @@ export const metadata = {
   openGraph: {
     title: 'Aldi Nurfa Pratama - Web Developer Professional | Jasa Website Terpercaya',
     description:
-      'Web developer berpengalaman dari Bandung. Spesialis pembuatan website modern, aplikasi web, dan sistem custom. Melayani klien lokal Indonesia dan internasional dengan kualitas profesional.',
+      'Aldi Nurfa Pratama - Web developer berpengalaman dari Bandung, Indonesia. Spesialis pembuatan website modern, aplikasi web, dan sistem custom. Melayani klien lokal Indonesia dan internasional dengan kualitas profesional.',
     url: 'https://aldinurfapratama.vercel.app',
     siteName: 'Aldi Nurfa Pratama - Web Developer Portfolio',
     images: [
@@ -72,21 +85,47 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Aldi Nurfa Pratama - Web Developer | Jasa Website Professional',
     description:
-      'Web developer profesional dari Bandung. Spesialis React, Next.js, PHP. Melayani jasa website & development untuk klien lokal dan internasional.',
+      'Aldi Nurfa Pratama - Web developer profesional dari Bandung. Spesialis React, Next.js, PHP. Melayani jasa website & development untuk klien lokal dan internasional.',
     images: ['/preview.png'],
   },
   applicationName: 'Aldi Nurfa Pratama Portfolio',
   category: 'Technology',
   classification: 'Web Development Portfolio',
-  other: {
-    'mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
-    'geo.region': 'ID-JB',
-    'geo.placename': 'Bandung',
-    'geo.position': '-6.917464;107.619125',
-    ICBM: '-6.917464, 107.619125',
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Aldi Nurfa Pratama',
+  alternateName: 'Aldi Pratama',
+  url: 'https://aldinurfapratama.vercel.app',
+  image: 'https://aldinurfapratama.vercel.app/preview.png',
+  jobTitle: 'Full-Stack Web Developer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Freelance',
   },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bandung',
+    addressRegion: 'Jawa Barat',
+    addressCountry: 'ID',
+  },
+  sameAs: [
+    'https://github.com/aldinurfapratama',
+    'https://linkedin.com/in/aldinurfapratama',
+  ],
+  knowsAbout: [
+    'Web Development',
+    'React',
+    'Next.js',
+    'PHP',
+    'Laravel',
+    'JavaScript',
+    'TypeScript',
+    'Full Stack Development',
+  ],
+  description: 'Web developer profesional dari Bandung, Indonesia. Spesialis React, Next.js, PHP Laravel.',
 };
 
 export default function RootLayout({
@@ -96,6 +135,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <link rel="canonical" href="https://aldinurfapratama.vercel.app" />
+        <meta name="geo.region" content="ID-JB" />
+        <meta name="geo.placename" content="Bandung" />
+        <meta name="geo.position" content="-6.917464;107.619125" />
+        <meta name="ICBM" content="-6.917464, 107.619125" />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500`}
       >

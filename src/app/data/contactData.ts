@@ -3,7 +3,7 @@
 export const socials = [
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/083137450560',
+    href: 'https://wa.me/623143053581',
     src: '/logo/WhatsApp.svg.png',
   },
   {

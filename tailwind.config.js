@@ -7,12 +7,11 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class', // <--- UBAH INI
+  darkMode: 'class', 
   theme: {
     extend: {
       colors: {
-        primary: '#8B5CF6', // Contoh warna ungu
-        // Tambahkan warna lain jika diperlukan
+        primary: '#8B5CF6', 
       },
     },
   },
