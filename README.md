@@ -432,7 +432,7 @@ While this is a personal portfolio, feedback and suggestions are welcome!
 
 📍 **Location**: Bandung, West Java, Indonesia  
 📧 **Email**: aldibusnisess@gmail.com  
-📱 **WhatsApp**: [+62 831-4305-3581](https://wa.me/623143053581)  
+📱 **WhatsApp**: [+62 831-4305-3581](https://wa.me/6283143053581)  
 💼 **LinkedIn**: [Aldi Pratama](https://www.linkedin.com/in/aldi-pratama-8075082a8/)  
 💬 **Telegram**: [@aldinurfap](https://t.me/aldinurfap)  
 🌐 **Website**: [aldinurfapratama.vercel.app](https://aldinurfapratama.vercel.app)
